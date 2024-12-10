@@ -1,0 +1,873 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.dashboard {
+    padding: 20px;
+}
+
+.widget-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.widget {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.widget:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.widget h3 {
+    margin-bottom: 16px;
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 8px;
+}
+
+/* Weather Widget Styles */
+.weather-content {
+    padding: 8px;
+}
+
+.weather-search {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.weather-search input {
+    flex: 1;
+    padding: 6px 8px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 12px;
+    background-color: #f8f9fa;
+}
+
+.weather-search button {
+    padding: 6px 12px;
+    background: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.2s;
+}
+
+.weather-search button:hover {
+    background: #1976D2;
+}
+
+.weather-details {
+    text-align: center;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+.weather-details h4 {
+    color: #2196F3;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.weather-details p {
+    margin: 6px 0;
+    color: #555;
+    font-size: 12px;
+}
+
+.weather-error {
+    color: #ff4444;
+    text-align: center;
+    font-size: 12px;
+    padding: 8px;
+}
+
+/* Todo Widget Styles */
+.todo-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 4px;
+}
+
+.todo-input-container {
+    display: flex;
+    gap: 6px;
+}
+
+.todo-content input {
+    flex: 1;
+    padding: 6px 8px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.todo-content button {
+    padding: 6px 12px;
+    background: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 12px;
+}
+
+.todo-content button:hover {
+    background: #2196F3;
+}
+
+#todo-list {
+    list-style: none;
+    margin-top: 8px;
+    max-height: calc(100vh - 250px);
+    overflow-y: auto;
+}
+
+#todo-list li {
+    padding: 6px 8px;
+    border-radius: 4px;
+    background: #f8f9fa;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    transition: background 0.2s;
+}
+
+#todo-list li:hover {
+    background: #f0f0f0;
+}
+
+#todo-list label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+    cursor: pointer;
+}
+
+#todo-list input[type="checkbox"] {
+    margin: 0;
+    width: 14px;
+    height: 14px;
+}
+
+#todo-list span {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#todo-list .delete-btn {
+    opacity: 0;
+    padding: 2px 6px;
+    background: none;
+    color: #ff4444;
+    font-size: 14px;
+    transition: opacity 0.2s;
+    margin-left: 4px;
+}
+
+#todo-list li:hover .delete-btn {
+    opacity: 1;
+}
+
+#todo-list .delete-btn:hover {
+    color: #ff0000;
+}
+
+/* Password Generator Styles */
+.password-display {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.password-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.checkbox-options label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px;
+    cursor: pointer;
+}
+
+.generate-btn {
+    width: 100%;
+    padding: 8px;
+    background: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.3s;
+}
+
+.generate-btn:hover {
+    background: #6D4C41;
+}
+
+/* Currency Converter Styles */
+.currency-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+    background: #ffffff;
+    border-radius: 4px;
+}
+
+.currency-input {
+    display: flex;
+    gap: 6px;
+    background: #f8f9fa;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.currency-input input {
+    flex: 1;
+    padding: 4px 6px;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #333;
+    background: white;
+    transition: border-color 0.3s;
+    min-width: 60px;
+    height: 24px;
+}
+
+.currency-input select {
+    width: 90px;
+    padding: 4px;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    background: white;
+    font-size: 12px;
+    color: #333;
+    cursor: pointer;
+    height: 24px;
+}
+
+.swap-btn {
+    padding: 4px;
+    background: #f0e7ff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3px 0;
+    height: 24px;
+}
+
+.swap-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.exchange-rate {
+    text-align: center;
+    color: #666;
+    font-size: 11px;
+    padding: 6px;
+    background: #f8f9fa;
+    border-radius: 3px;
+    border: 1px solid #e0e0e0;
+}
+
+/* Add animation for rate updates */
+@keyframes highlight {
+    0% { background-color: #f0e7ff; }
+    100% { background-color: #f8f9fa; }
+}
+
+.exchange-rate.updated {
+    animation: highlight 1s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+    .currency-input {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .currency-input select {
+        width: 100%;
+    }
+}
+
+/* Notes Widget Styles */
+.notes-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 4px;
+}
+
+.notes-input-container {
+    background: #f8f9fa;
+    padding: 8px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.note-title-input {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+.note-content-input {
+    width: 100%;
+    height: 60px;
+    padding: 6px 8px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    resize: none;
+    font-size: 12px;
+    font-family: inherit;
+    margin-bottom: 6px;
+}
+
+.add-note-btn {
+    width: 100%;
+    padding: 6px;
+    background: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.2s;
+}
+
+.add-note-btn:hover {
+    background: #2196F3;
+}
+
+.notes-list {
+    max-height: calc(100vh - 320px);
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.note-item {
+    background: #f8f9fa;
+    border-radius: 4px;
+    padding: 8px;
+    margin-bottom: 6px;
+    border-left: 3px solid #2196F3;
+}
+
+.note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+    
+}
+
+.note-header h4 {
+    font-size: 12px;
+    color: #333;
+    margin: 0;
+    font-weight: 600;
+}
+
+.note-actions {
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.note-item:hover .note-actions {
+    opacity: 1;
+}
+
+.edit-note, .delete-note {
+    background: none;
+    border: none;
+    padding: 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.edit-note svg {
+    width: 14px;
+    height: 14px;
+}
+
+.delete-note {
+    color: #ff4444;
+    font-size: 16px;
+}
+
+.note-text {
+    font-size: 11px;
+    color: #666;
+    margin: 4px 0;
+    line-height: 1.4;
+    max-height: 60px;
+    overflow-y: auto;
+}
+
+.note-date {
+    font-size: 10px;
+    color: #999;
+    display: block;
+}
+
+/* Edit form styles */
+.note-edit-form {
+    padding: 6px;
+}
+
+.edit-title-input,
+.edit-content-input {
+    width: 100%;
+    padding: 4px 6px;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+.edit-content-input {
+    height: 50px;
+    resize: none;
+    font-family: inherit;
+}
+
+.edit-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.edit-actions button {
+    flex: 1;
+    padding: 4px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 11px;
+    color: white;
+}
+
+.save-edit {
+    background: #2196F3;
+}
+
+.cancel-edit {
+    background: #ff4444;
+}
+
+/* History and Bookmarks Styles */
+.history-item, .bookmark-item {
+    padding: 10px;
+    border-radius: 6px;
+    background: #f8f9fa;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.3s;
+}
+
+.history-item:hover, .bookmark-item:hover {
+    background: #f0f0f0;
+}
+
+.history-item a, .bookmark-item a {
+    flex: 1;
+    color: #2196F3;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* Speed Test Widget Styles */
+.speed-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.metric {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.metric .label {
+    color: #666;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.metric .value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2196F3;
+}
+
+/* Common Button Styles */
+.action-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.delete-btn {
+    color: #ff4444;
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.history-item:hover .delete-btn,
+.bookmark-item:hover .delete-btn,
+.note-item:hover .delete-btn {
+    opacity: 1;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* History Widget Styles */
+.history-widget {
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    padding: 6px 8px;
+    border-radius: 4px;
+    background: #f8f9fa;
+    margin-bottom: 6px;
+    gap: 8px;
+    transition: background 0.2s;
+}
+
+.history-item:hover {
+    background: #f0f0f0;
+}
+
+.history-item img {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+.history-item a {
+    flex: 1;
+    color: #2196F3;
+    text-decoration: none;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.history-time {
+    color: #666;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.delete-history {
+    background: none;
+    border: none;
+    color: #ff4444;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 2px 6px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.history-item:hover .delete-history {
+    opacity: 1;
+}
+
+.delete-history:hover {
+    color: #ff0000;
+}
+
+/* Ensure proper scrolling for history list */
+#history-list {
+    max-height: calc(100vh - 250px);
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+/* Add a subtle scrollbar */
+#history-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+#history-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#history-list::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 2px;
+}
+
+#history-list::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+/* Theme Variables */
+:root {
+    /* Light Theme Colors */
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --border-color: #e0e0e0;
+    --hover-bg: #f0f0f0;
+    --shadow-color: rgba(0,0,0,0.1);
+    --widget-bg: #ffffff;
+}
+
+[data-theme="dark"] {
+    /* Dark Theme Colors */
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --border-color: #404040;
+    --hover-bg: #3d3d3d;
+    --shadow-color: rgba(0,0,0,0.3);
+    --widget-bg: #2d2d2d;
+}
+
+/* Apply theme colors */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.widget {
+    background: var(--widget-bg);
+    box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+.widget h3 {
+    color: var(--text-primary);
+    border-bottom-color: var(--border-color);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.theme-toggle .sun-icon {
+    display: none;
+}
+
+.theme-toggle .moon-icon {
+    display: block;
+}
+
+[data-theme="dark"] .theme-toggle .sun-icon {
+    display: block;
+}
+
+[data-theme="dark"] .theme-toggle .moon-icon {
+    display: none;
+}
+
+/* Dark mode specific styles */
+[data-theme="dark"] .menu-btn {
+    background-color: var(--bg-secondary);
+}
+
+[data-theme="dark"] .menu-btn:hover {
+    background-color: var(--hover-bg);
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .weather-search input,
+[data-theme="dark"] .todo-content input {
+    background-color: var(--bg-secondary);
+}
+
+[data-theme="dark"] .history-item,
+[data-theme="dark"] .bookmark-item,
+[data-theme="dark"] #todo-list li {
+    background-color: var(--bg-secondary);
+}
+
+[data-theme="dark"] .history-item:hover,
+[data-theme="dark"] .bookmark-item:hover,
+[data-theme="dark"] #todo-list li:hover {
+    background-color: var(--hover-bg);
+}
+
+[data-theme="dark"] .note-item {
+    background-color: var(--bg-secondary);
+    border-left-color: #009688;
+}
+
+[data-theme="dark"] .weather-details,
+[data-theme="dark"] .currency-input,
+[data-theme="dark"] .password-display {
+    background-color: var(--bg-secondary);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: #555;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+/* Add these menu button specific dark mode styles */
+[data-theme="dark"] .menu-btn {
+    background-color: var(--bg-secondary);
+}
+
+[data-theme="dark"] .menu-btn span {
+    color: var(--text-primary); /* Make button text white in dark mode */
+}
+
+[data-theme="dark"] .menu-btn:hover {
+    background-color: var(--hover-bg);
+}
+
+/* Update SVG colors in dark mode */
+[data-theme="dark"] .menu-btn svg {
+    filter: brightness(1.2); /* Make icons slightly brighter in dark mode */
+}
+
+[data-theme="dark"] .menu-btn:hover svg {
+    filter: brightness(1.4);
+}
+
+/* Add active state for dark mode */
+[data-theme="dark"] .menu-btn.active {
+    background-color: #3d3d3d;
+}
+
+/* Add to your dark mode styles */
+[data-theme="dark"] .footer {
+    background-color: var(--bg-secondary);
+    border-top-color: var(--border-color);
+}
+
+[data-theme="dark"] .footer a {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .footer a:hover {
+    color: #64B5F6;
+}
+
+/* Add these error styles */
+.error-widget {
+    text-align: center;
+    padding: 20px;
+}
+
+.error-widget p {
+    color: #ff4444;
+    margin-top: 10px;
+} 
