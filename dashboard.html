@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Toolbox</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="widget-container">
+            <!-- Weather Widget -->
+            <div class="widget" id="weather-widget">
+                <h3>Weather</h3>
+                <div class="weather-content">
+                    <select id="location-select">
+                        <option value="">Select Location</option>
+                        <option value="london,uk">London</option>
+                        <option value="new york,us">New York</option>
+                        <option value="tokyo,jp">Tokyo</option>
+                        <option value="paris,fr">Paris</option>
+                        <!-- Add more cities as needed -->
+                    </select>
+                    <div id="weather-info"></div>
+                </div>
+            </div>
+
+            <!-- Todo Widget -->
+            <div class="widget" id="todo-widget">
+                <h3>Todo List</h3>
+                <div class="todo-content">
+                    <input type="text" id="todo-input" placeholder="Add new task...">
+                    <button id="add-todo">Add</button>
+                    <ul id="todo-list"></ul>
+                </div>
+            </div>
+
+            <!-- Bookmarks Widget -->
+            <div class="widget" id="bookmarks-widget">
+                <h3>Quick Bookmarks</h3>
+                <div id="bookmarks-list"></div>
+            </div>
+
+            <!-- Recent History Widget -->
+            <div class="widget" id="history-widget">
+                <h3>Recent History</h3>
+                <div id="history-list"></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/weather.js"></script>
+    <script src="js/todo.js"></script>
+    <script src="js/bookmarks.js"></script>
+    <script src="js/history.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
